@@ -1,0 +1,65 @@
+.img{
+    width: 100px; 
+    height: auto; 
+    float: left;
+}
+.list{
+    list-style: none;
+    padding: 0;
+}
+.header{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.cartTotal{
+    margin-top: 25px; 
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: 100px 50px;
+    grid-gap: 10px; 
+    align-items: center; 
+}
+
+.problemchild{
+    display: grid;
+    grid-template-rows: 25px 25px;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    align-items: center;
+}
+.name{
+    margin-bottom: 20px;
+}
+.description{
+    grid-row: 1;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.price{
+    grid-row: 2;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.totalLabel {
+    grid-column: 1; 
+  }
+
+.totalValue {
+    grid-column: 2;
+    font-weight: bold;
+  }
+
+.purchase-button{
+    grid-column: 3;
+    grid-row: 1;
+    margin-left: 330px;
+}
+
+ mat-card {
+  max-width: 600px; 
+  margin-left: 50px;
+  margin-bottom: 25px;
+}
+.condition{
+    margin-left: 25px;
+}

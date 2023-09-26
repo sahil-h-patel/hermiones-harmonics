@@ -1,0 +1,49 @@
+.doggie{
+    float:right;
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+}
+
+.purchase-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.form-field {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.total-container {
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+  }
+  
+.total-label {
+    margin-right: 10px; 
+}
+  
+.total-price {
+    font-weight: 400;
+    margin-right: 15px;
+    font-size: 12px; 
+}
+
+.header {
+    margin-left: 10px;
+}
+
+.product-item {
+    margin-left: 6px;
+}
+
+.purchase-button{
+    width: 100px; 
+    margin-left: 60px
+}

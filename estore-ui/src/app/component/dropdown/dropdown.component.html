@@ -1,0 +1,21 @@
+<div class = "menu-button">
+<button mat-button [matMenuTriggerFor]="menu">
+    <img src="assets/user-profile-icon.jpg" alt="user profile" class="menu-icon"></button>
+
+
+<div class="menu-items-wrapper">
+    <mat-menu #menu="matMenu">
+
+    <button *ngIf="!isAdmin()" mat-menu-item (click)='redirectTo("cart")'>My Cart</button>
+    <button *ngIf="isAdmin()" mat-menu-item (click)='redirectTo("accounts")'>Accounts</button>
+    <button *ngIf="isAdmin()" mat-menu-item (click)='redirectTo("inventory")'>Inventory</button>
+    <button *ngIf="!isAdmin()" mat-menu-item (click)='redirectToMyAccount()'>My Account</button>
+    <button *ngIf="!isAdmin()" mat-menu-item (click)='redirectTo("wishlist")'>Wishlist</button>
+    <button mat-menu-item (click)='redirectTo("orders")'>
+        <p *ngIf="!isAdmin()">Past Orders</p>
+        <p *ngIf="isAdmin()">Orders</p>
+    </button>
+    <button mat-menu-item (click)='redirectTo("logout")'>Logout</button>
+
+    </mat-menu>
+</div>

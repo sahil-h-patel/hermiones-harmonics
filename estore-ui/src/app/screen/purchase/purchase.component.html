@@ -1,0 +1,44 @@
+<img class="doggie" src="assets/IMG_3589.jpg">
+<h3 float = right>Thank you for your purchase!</h3>
+<div class="whole">
+  <div>
+    <h3 class = "header">
+      Items
+    </h3>
+    <ol>
+      <li *ngFor="let product of cart" class = "product-item">
+        {{product.name}}
+      </li>
+    </ol>
+  </div >
+  <div class = "total-container">
+  <h3 class = "total-label">
+    Total
+    <h1 class = "total-price">
+      ${{totalPrice}}
+    </h1>
+  </h3>
+</div>
+<form (ngSubmit)="purchase()" class="purchase-form">
+<div class="form-field">
+  <mat-form-field>
+    <mat-label>Address</mat-label >
+    <mat-select [(ngModel)]="selectedAddress" name="selectedAddress">
+      <mat-option *ngFor="let address of buyerInfo.shippingAddresses" [value]="address" required>
+        {{address}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="form-field">
+  <mat-form-field>
+    <mat-label>Credit Card</mat-label>
+    <mat-select [(ngModel)]="selectedCreditCard" name="selectedCreditCard">
+      <mat-option *ngFor="let creditCard of buyerInfo.creditCards" [value]="creditCard" required>
+        {{creditCard.holderName}} - {{getLastFourDigitsCard(creditCard)}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <button mat-raised-button color="primary" type="submit" class="purchase-button">Purchase</button>
+</form></div>

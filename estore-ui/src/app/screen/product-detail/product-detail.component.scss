@@ -1,0 +1,31 @@
+.product-card {
+  min-width: 400px;
+  max-width: 600px;
+  display: flex;
+  margin: 1rem;
+}
+.price{
+  margin-bottom: 5px;
+}
+.img{
+  float: left;
+  max-width: 500px;
+  max-height: 600px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.whole{
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.cart-button{
+  display: flex;
+  margin: 0 auto;
+  left: 35%;
+}
+.wishlist-button{
+  size: auto;
+  grid-column: 2;
+}

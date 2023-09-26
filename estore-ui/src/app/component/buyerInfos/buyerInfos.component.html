@@ -1,0 +1,19 @@
+<div class="banner">
+  <h1>All Buyer Accounts</h1>
+</div>
+
+<hr>
+
+<ul class="buyerInfos">
+  <mat-list>
+    <li *ngFor="let buyerInfo of buyerInfos">
+      <mat-card class="account-card">
+        <a routerLink="/account/{{buyerInfo.id}}">
+          User ID: {{buyerInfo.userId}} | Unique ID: {{buyerInfo.id}} | Name: {{buyerInfo.name}}
+        </a>
+      </mat-card>
+      <br>
+    </li>
+  </mat-list>
+</ul>
+

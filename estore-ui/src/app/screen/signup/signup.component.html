@@ -1,0 +1,13 @@
+<form>
+  <div class="group">
+    <input type="email" #email placeholder=""><span class="highlight"></span><span class="bar"></span>
+    <label>Email</label>
+  </div>
+  <div class="group">
+    <input type="password" #password placeholder=""><span class="highlight" ></span><span class="bar"></span>
+    <label>Password</label>
+  </div>
+  <button type="button" (click)="signup(email.value, password.value)" class="button buttonBlue">Sign Up
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form>

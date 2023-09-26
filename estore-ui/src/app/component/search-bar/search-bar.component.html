@@ -1,0 +1,22 @@
+<mat-form-field class="example-form-field">
+  <mat-icon matPrefix>search</mat-icon>
+  <mat-label>Search</mat-label>
+  <input #searchBox matInput type="text" (input)="search(searchBox.value)">
+  <button *ngIf="searchBox.value!=''" matSuffix mat-icon-button aria-label="Clear" (click)="searchBox.value='';search('')">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<mat-nav-list>
+  <mat-list-item *ngFor="let product of products$ | async">
+     <a routerLink="/product/{{product.id}}">
+      <div>
+        <div class="name-tags">
+          <span class="name" matListItemTitle>{{ product.name }}</span>
+          <tags-list [tags]="product.tags"></tags-list>
+        </div>
+        <span class="description" matListItemLine>{{product.description}}</span>
+      </div>
+      <span class="price">${{ product.price }}</span>
+     </a>
+  </mat-list-item>
+</mat-nav-list>

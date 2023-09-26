@@ -1,0 +1,14 @@
+<mat-form-field class="form-field">
+  <mat-label>Product Keywords</mat-label>
+  <mat-chip-grid #chipGrid aria-label="Enter keywords" >
+    <mat-chip-row *ngFor="let keyword of keywords" (removed)="removeKeyword(keyword)">
+      {{keyword}}
+      <button matChipRemove aria-label="'remove ' + keyword">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+  </mat-chip-grid>
+  <input placeholder="New keyword..."
+          [matChipInputFor]="chipGrid"
+          (matChipInputTokenEnd)="add($event)"/>
+</mat-form-field>

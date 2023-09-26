@@ -1,0 +1,69 @@
+button {
+    margin: 5px;
+    padding: .5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+}
+button:hover {
+    background-color: darkgray;
+}
+button:active {
+    background-color: rgb(85, 85, 85);
+    text-decoration-color: white;
+}
+div {
+    margin: 5px;
+}
+
+.button-bin{
+    margin-top: 15px;
+}
+
+div.labels {
+    margin: 10px;
+    font-size: 25px;
+    border-spacing: 5px;
+    white-space: nowrap;
+}
+div.inputs {
+    padding-right: 10px;
+    display: flex;
+    font-size: 25px;
+    white-space: nowrap;
+}
+div.span {
+    display: block;
+    margin-left: 5px;
+    padding: 5px;
+}
+a {
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px;
+    color: black;
+    text-decoration: none;
+    border: solid 1px white;
+    background-color: darkgray;
+    border-radius: 5px;
+    font-size: 25px;
+}
+a:hover {
+    background-color: rgb(85, 85, 85);
+}
+ul {
+    list-style-type: none;
+    
+}
+h2 {
+    text-align: center;
+}
+input {
+    width: 300px;
+    height: 25px;
+}
+p {
+    padding-left: .5rem;
+}

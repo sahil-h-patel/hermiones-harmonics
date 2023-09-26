@@ -1,0 +1,121 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: rgb(45, 45, 45);
+  color: white;
+}
+
+.logo{
+  display: grid;
+  column-width: auto;
+}
+.doggie{
+  grid-column: 1;
+  float: left;
+}
+.home{
+  grid-column: 2;
+}
+
+
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  color: white;
+  text-decoration: none;
+  border: solid 1px white;
+  border-radius: 5px;
+}
+a.search {
+  padding-right: 20px;
+}
+a.login-btn {
+  padding: 0 24px;
+}
+a.profile-btn {
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+a:hover {
+  background-color: rgb(107, 107, 107);
+}
+a:active {
+  background-color: rgb(57, 57, 57);
+}
+a.home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+a.home:hover {
+  background-color: rgb(57, 57, 57);
+}
+img {
+  height: 32px;
+  width: 32px;
+}
+.user-profile {
+  position: relative;
+}
+a.profile-btn img {
+  height: 42px;
+  width: 42px;
+}
+.tool-tip {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: calc(-100% - 8px);
+  font-size: 12px;
+  background-color: rgb(45, 45, 45);
+  color: white;
+  padding: 8px;
+  border: 1px solid white;
+  border-radius: 5px;
+  opacity: 0;
+}
+.tool-tip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: calc(100%);
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 9px solid white;
+}
+.tool-tip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: calc(100%);
+  width: 0; 
+  height: 0; 
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 7px solid rgb(45, 45, 45);
+}
+a.profile-btn:hover ~ .tool-tip{
+  opacity: 1;
+}

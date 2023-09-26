@@ -1,0 +1,188 @@
+
+<div class="profile-banner">
+    <h1>My profile</h1>
+    
+</div>
+
+<hr>
+
+<div class="buyerInfo" *ngIf="buyerInfo">
+    <br>
+    <mat-card class="name-card">
+        <ng-container *ngIf="!isEditingName">
+            <mat-card-header align="start">
+                <mat-card-title class="card-title">{{buyerInfo.name}}</mat-card-title>
+                <mat-card-subtitle>User</mat-card-subtitle>
+            </mat-card-header>
+                
+            <mat-card-actions align="end">
+                <button mat-icon-button type="button" (click)="isEditingName=true" title="Edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+            
+        </ng-container>
+
+        <ng-container *ngIf="isEditingName">
+            <mat-form-field class="input-field">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" #newName value={{buyerInfo.name}}>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button mat-icon-button type="button" (click)="saveName(newName.value)" title="Save">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </mat-card-actions>   
+        </ng-container>
+    </mat-card>
+
+    <br>
+
+    <mat-card class="contact-details-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">Contact Details</mat-card-title>
+        </mat-card-header>
+        <ng-container *ngIf="!isEditingContactDetails">
+            <mat-card-header>
+                <mat-card-subtitle>Phone Number: {{buyerInfo.phoneNumber}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+                <button  mat-icon-button type="button" (click)="isEditingContactDetails=true" title="Edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>
+
+        <ng-container *ngIf="isEditingContactDetails">
+            <mat-form-field class="input-field">
+                <mat-label>Phone Number</mat-label>
+                <span matPrefix>+1 &nbsp;</span>
+                <input type="tel" matInput #newPhoneNumber value={{buyerInfo.phoneNumber}}>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button mat-icon-button type="button" (click)="saveContactDetails(newPhoneNumber.value)" title="Save">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>
+    </mat-card>
+
+    <br>
+
+    <mat-card class="addresses-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">Shipping Addresses</mat-card-title>
+        </mat-card-header>
+        <ng-container *ngIf="!isEditingShippingAddresses">
+            <mat-list>
+                <li *ngFor="let address of buyerInfo.shippingAddresses; let i = index">
+                    <div>
+                        <mat-card-subtitle class="address-subtitle">Address {{i + 1}}: {{address}}</mat-card-subtitle>
+                    </div>
+                </li>
+            </mat-list>
+            <mat-card-actions align="end">
+                <button  mat-icon-button type="button" (click)="isEditingShippingAddresses=true" title="Edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>
+
+        <ng-container *ngIf="isEditingShippingAddresses">
+            <mat-list>
+                <li *ngFor="let address of buyerInfo.shippingAddresses; let i = index">
+                    <mat-form-field class="input-field">
+                        <input matInput type="text" #thisAddress value={{address}}>
+                    </mat-form-field>
+                    <button mat-icon-button type="button" (click)="updateShippingAddress(i, thisAddress.value)" title="Update">
+                        <mat-icon>save</mat-icon>
+                    </button> 
+                    <button mat-icon-button type="button" (click)="deleteShippingAddress(i)" title="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button> 
+                </li>
+            </mat-list> 
+            
+            <div>
+                <mat-form-field class="input-field">
+                    <mat-label>New Shipping Address</mat-label>
+                    <input matInput type="text" #newAddress>
+                </mat-form-field>
+                <button [disabled]="(newAddress.value == '')" mat-icon-button type="button"  title="Add new address" (click)="appendShippingAddress(newAddress.value); newAddress.value = ''">
+                    <mat-icon>add</mat-icon>
+                </button> 
+            </div>
+
+            <mat-card-actions align="end">
+                <button mat-icon-button type="button" (click)="isEditingShippingAddresses=false" title="Done">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>      
+    </mat-card>
+    
+    <br>
+
+    <mat-card class="creditcards-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">Payment Methods</mat-card-title>
+        </mat-card-header>
+        <ng-container *ngIf="!isEditingCreditCards">
+            <mat-list>
+                <li *ngFor="let card of buyerInfo.creditCards; let i = index">
+                    <mat-card-subtitle class="address-subtitle">Card ending in {{getLastFourDigitsCard(i)}}</mat-card-subtitle>
+                </li>
+            </mat-list>
+            <mat-card-actions align="end">
+                <button  mat-icon-button type="button" (click)="isEditingCreditCards=true" title="Edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>
+        
+        <ng-container *ngIf="isEditingCreditCards">
+            <mat-list>
+                <li *ngFor="let card of buyerInfo.creditCards; let i = index">
+                    <mat-form-field class="input-field">
+                        <input matInput type="text" #thisHolderName value={{card.holderName}}>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="text" #thisCardNumber value={{card.cardNumber}}>
+                    </mat-form-field>
+                    <button mat-icon-button type="button" (click)="updateCreditCard(i, thisHolderName.value, thisCardNumber.value)" title="Update">
+                        <mat-icon>save</mat-icon>
+                    </button> 
+                    <button mat-icon-button type="button" (click)="deleteCreditCard(i)" title="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button> 
+                </li>
+            </mat-list>
+
+            <div>
+                <mat-form-field class="input-field">
+                    <mat-label>Holder Name</mat-label>
+                    <input matInput type="text" #newHolderName>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Credit Card</mat-label>
+                    <input matInput type="text" #newCardNumber>
+                </mat-form-field>
+                <button [disabled]="newHolderName.value == '' || newCardNumber.value == ''" mat-icon-button type="button" title="Add new credit card" (click)="appendCreditCard(newHolderName.value, newCardNumber.value); newHolderName.value = ''; newCardNumber.value = ''">
+                    <mat-icon>add</mat-icon>
+                </button> 
+            </div>
+
+            <mat-card-actions align="end">
+                <button mat-icon-button type="button" (click)="isEditingCreditCards=false" title="Done">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </mat-card-actions>
+        </ng-container>
+    </mat-card>
+
+ </div>
+
+<button mat-icon-button type="button" (click)="goBack()">
+    <mat-icon matPrefix>keyboard_backspace</mat-icon>
+</button>
+

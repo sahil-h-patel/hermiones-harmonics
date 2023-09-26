@@ -1,0 +1,38 @@
+<h2>Available Instruments</h2>
+<div class="sorts">
+  <span>
+    <button type="button" (click)="sortAlphabeticallyAscending()" *ngIf="!ascendingOrderAlpha"> Sort Alphabetically (ascending)</button>
+    <button type="button" (click)="sortAlphabeticallyDescending()" *ngIf="ascendingOrderAlpha"> Sort Alphabetically (descending)</button>
+  </span>
+  <span>
+    <button type="button" (click)="sortPriceAscending()" *ngIf="!ascendingOrderPrice"> Sort by price (ascending)</button>
+    <button type="button" (click)="sortPriceDescending()" *ngIf="ascendingOrderPrice"> Sort by price (descending)</button>
+  </span>
+  <span>
+    <button type="button" (click)="sortPopularityAscending()" *ngIf="!ascendingOrderPopularity"> Sort by popularity (ascending)</button>
+    <button type="button" (click)="sortPopularityDescending()" *ngIf="ascendingOrderPopularity"> Sort by popularity (descending)</button>
+  </span>
+</div>
+<div>
+  <p>Press enter to input your price range. To remove your price range, press enter while the text boxes are empty.</p>
+</div>
+<div class="labels">
+  <span>
+    <label for="min-price">Min Price: </label>
+    <input id="min-price" type="number" [(ngModel)]="minPrice" (keyup.enter)="filterByPrice()"> <!--Inputted when enter is hit-->
+  </span>
+  <span>
+    <label for="max-price"> Max Price: </label>
+    <input id="max-price" type="number" [(ngModel)]="maxPrice" (keyup.enter)="filterByPrice()">
+  </span>
+</div>
+
+<ul class="Products">
+  <li *ngFor="let product of products">
+    <div class="button-bin">
+        <a routerLink="/product/{{product.id}}" (click)="incrementNumClicks(product)">
+          <span class="badge"></span> {{product.name}}
+        </a>
+    </div>
+  </li>
+</ul>

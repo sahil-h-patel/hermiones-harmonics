@@ -1,0 +1,26 @@
+.example-form-field {
+  width: 100%;
+}
+a {
+  display: flex;
+  text-decoration: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+}
+.price {
+  min-width: 100px;
+  color: grey;
+}
+.name {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: -12px !important;
+}
+.name-tags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

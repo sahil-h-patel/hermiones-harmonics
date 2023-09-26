@@ -1,0 +1,45 @@
+<mat-card *ngIf="this.order" class="card">
+  <mat-card-header class="header-container" >
+    <mat-card-title-group class="header-item">
+      <mat-card-title>ORDER PLACED</mat-card-title>
+      <mat-card-subtitle>{{ this.dateFormatted }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-title-group class="header-item">
+      <mat-card-title>TOTAL</mat-card-title>
+      <mat-card-subtitle>{{ this.total }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-title-group class="header-item">
+      <mat-card-title>SHIPPED TO</mat-card-title>
+      <mat-card-subtitle>{{ this.order.address.substring(0, 20) }}{{this.order.address.length > 20? "...": ""}}</mat-card-subtitle>
+    </mat-card-title-group >
+    <mat-card-title-group *ngIf="!isAdminPage()">
+      <mat-card-title>ORDER STATUS</mat-card-title>
+      <mat-card-subtitle>{{this.order.orderStatus}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-title-group *ngIf="isAdminPage()" class="header-item">
+      <mat-card-title>ORDER STATUS</mat-card-title>
+      <mat-form-field>
+        <mat-select [(value)]="selectedOrderStatus" (selectionChange)="updateOrderStatus()">
+          <mat-option value="UNPROCESSED">UNPROCESSED</mat-option>
+          <mat-option value="SHIPPED">SHIPPED</mat-option>
+          <mat-option value="DELIVERED">DELIVERED</mat-option>
+          <mat-option value="CANCELLED">CANCELLED</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-title-group>
+    <mat-card-title-group *ngIf="isAdminPage()">
+      <!--Gives some space for the order status select box-->
+    </mat-card-title-group>
+    <mat-card-title-group class="header-item">
+      <mat-card-title>ORDER #</mat-card-title>
+      <mat-card-subtitle>{{this.order.orderID}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-title-group *ngIf="isAdminPage()" class="header-item">
+      <mat-card-title>USER ID</mat-card-title>
+      <mat-card-subtitle>{{this.order.userID}}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content class = "header-content">
+    <div *ngFor="let product of products; trackBy: trackProductItem"><app-product [product]="product"></app-product></div>
+  </mat-card-content>
+</mat-card>

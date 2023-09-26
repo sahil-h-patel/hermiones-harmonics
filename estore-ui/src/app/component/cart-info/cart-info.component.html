@@ -1,0 +1,38 @@
+<div class= "condition" *ngIf="isCartEmpty()">
+  <h3>Your cart is empty!</h3>
+</div>
+
+<div *ngIf="cart && cart.length > 0">
+  <div class="header">
+    <h2>Your Cart</h2>
+  </div>
+  
+  <div class="list">
+    <li *ngFor="let item of cart; let i = index" class="card-container">
+      <mat-card>
+        <ul>
+        <img [src]="item.image" class="img">
+        <div class="name-tags">
+          <span class="name" matListItemTitle><p>{{ item.name }}</p></span>
+          <tags-list [tags]="item.tags"></tags-list>
+        </div>
+        <div class="problemchild">
+       <div class="description" matListItemLine><p>{{item.description}}</p></div>
+       <div class="delete-button"><button mat-raised-button (click)="delete(i)">Delete</button></div>
+      <div class="price"><p>${{ item.price }}</p></div>
+      </div>
+    </ul>
+    </mat-card>
+    </li>
+
+    <div class="cartTotal">
+      <div class="totalLabel">Cart Total:</div>
+      <div class="totalValue">${{ totalPrice }}</div>
+      <div class="purchase-button"><button mat-raised-button (click)="purchase()">Purchase</button></div>
+    </div>
+
+  </div>
+ 
+
+
+

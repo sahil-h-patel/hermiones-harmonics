@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "EstoreApiApplication",
+            "request": "launch",
+            "mainClass": "com.estore.api.estoreapi.EstoreApiApplication",
+            "projectName": "estore-api"
+        }
+    ]
+}

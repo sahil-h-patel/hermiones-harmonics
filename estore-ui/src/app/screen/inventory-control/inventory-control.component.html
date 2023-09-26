@@ -1,0 +1,68 @@
+<h2>Inventory Control</h2>
+
+<form (ngSubmit)="addProduct()">
+  <div class="name-price-quantity">
+    <mat-form-field class="product-attribute">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="newProduct.name" placeholder="Ex. Tuba" type="text" name="name" >
+    </mat-form-field>
+    <mat-form-field class="product-attribute" floatLabel="always">
+      <mat-label>Price</mat-label>
+      <input matInput [(ngModel)]="newProduct.price" type="number" class="input-price" name="price" placeholder="0.00" >
+      <span matTextPrefix>$&nbsp;</span>
+    </mat-form-field>
+    <mat-form-field class="product-attribute">
+      <mat-label>Quantity</mat-label>
+      <input matInput [(ngModel)]="newProduct.quantity" type="number" name="quantity">
+    </mat-form-field>
+  </div>
+  <mat-form-field class="product-attribute">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="newProduct.description" placeholder="Tuba made by ..."  name="description" ></textarea>
+  </mat-form-field>
+  <chip-editor [keywords]="newProduct.tags" (onChange)="updateNewProduct('tags', $event)" ></chip-editor>
+  <div class="button-container">
+    <button mat-raised-button type="submit" class="edit" title="edit product information" color="primary">
+      Add Product
+    </button>
+    <button mat-raised-button type="button" class="delete" title="delete product" (click)="clearNewProductField()" color="warn">
+      Clear Field
+    </button>
+  </div>
+</form>
+
+<div *ngFor="let product of products">
+  <form (ngSubmit)="updateProduct(product)">
+    <div class="name-price-quantity">
+      <mat-form-field class="product-attribute">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Ex. Tuba" type="text" [(ngModel)]="product.name" name="name">
+      </mat-form-field>
+      <mat-form-field class="product-attribute" floatLabel="always">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" class="input-price" [(ngModel)]="product.price" name="price" placeholder="0.00">
+        <span matTextPrefix>$&nbsp;</span>
+      </mat-form-field>
+      <mat-form-field class="product-attribute">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" [(ngModel)]="product.quantity" name="quantity">
+      </mat-form-field>
+    </div>
+    <mat-form-field class="product-attribute">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Tuba made by ..." [(ngModel)]="product.description" name="description"></textarea>
+    </mat-form-field>
+    <chip-editor [keywords]="product.tags" (onChange)="updateProductTags(product, $event)" ></chip-editor>
+    <div class="button-container">
+      <button mat-raised-button type="submit" class="edit" title="edit product information" color="primary">
+        Update Product
+      </button>
+      <button mat-raised-button type="button" class="delete" title="delete product" (click)="deleteProduct(product.id)" color="warn">
+        Delete Product
+      </button>
+      <a mat-raised-button routerLink="/product/{{product.id}}">
+        View product page
+      </a>
+    </div>
+  </form>
+</div>

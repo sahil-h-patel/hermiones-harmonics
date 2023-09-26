@@ -1,0 +1,22 @@
+.footer {
+    background-color: #717171;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    position: sticky;
+  }
+  
+body {
+    margin: 0;
+    flex-direction: column;
+    padding: 0;
+    display: flex;
+    min-height: 200px;
+}
+  .content {
+    flex: 1; 
+  }
+  
+
+  

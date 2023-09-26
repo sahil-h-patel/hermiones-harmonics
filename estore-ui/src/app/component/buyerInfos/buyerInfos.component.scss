@@ -1,0 +1,19 @@
+.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    color: rgb(45, 45, 45);
+}
+hr {
+    height: 1px;
+    background-color: rgb(45, 45, 45);
+    margin-left: 24px;
+    margin-right: 24px;
+    width: 1000px;
+}
+.account-card {
+    background-color: rgb(175, 175, 175);
+    width: 950px;
+  }

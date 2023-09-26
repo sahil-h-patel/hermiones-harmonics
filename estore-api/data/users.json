@@ -1,0 +1,1 @@
+[{"id":0,"username":"admin","password":"admin","authorities":"ADMIN"},{"id":1,"username":"user","password":"user","authorities":"USER"},{"id":2,"username":"joe@test.com","password":"password1","authorities":"USER"}]

@@ -1,0 +1,25 @@
+<div class="whole">
+  <div class="product" *ngIf="product">
+    <img [src]="product.image" class="img">
+    <mat-card class="product-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title class="mat-headline">{{product.name}}</mat-card-title>
+          <mat-card-subtitle class="price">${{product.price}}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <b>Quantity:</b> {{product.quantity}}
+        </p>
+        <p>
+          {{product.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <div class="button-grid" *ngIf="!isAdminPage()">
+      <button mat-raised-button class="cart-button" (click)='addtoCart()'>Add to cart</button>
+    </div>
+  </div>
+</div>
+  

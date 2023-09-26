@@ -1,0 +1,16 @@
+<div class="header">
+  <div class="logo">
+  <h1>
+    <div class="doggie"><img src='assets/Hermione.jpg'></div><a routerLink="/" class="home">Hermione's Harmonics</a> 
+  </h1></div>
+  <div class="right">
+    <a *ngIf="this.url !== '/search'" class="search" href="/search">
+      <img src="assets/search-icon.svg" alt="">
+      <p>Search</p>
+    </a>
+    <a class="login-btn" *ngIf="this.url !== '/login' && !isLoggedIn"  href="/login">
+      <p>Login</p>
+    </a>
+    <app-dropdown *ngIf="this.url !== '/login' && this.url !== '/logout' && isLoggedIn"></app-dropdown>
+  </div>
+</div>
